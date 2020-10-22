@@ -40,3 +40,8 @@ update address_book set zip=121232 where first_name='ankit';
 updtae address_book set address='malad' where first_name='naman';
 ```
 
+### Delete Contact From Table Using Name
+```
+delete from address_book where first_name='naman' and last_name='kalra';
+```
+
