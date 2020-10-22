@@ -77,3 +77,14 @@ select * from address_book;
 select type, count(first_name) from address_book group by type;
 ```
 
+### Add person to both Friend and Family
+```
+alter table address_book drop PRIMARY KEY;
+alter table address_book add PRIMARY KEY(first_name, last_name, type);
+insert into address_book 
+(first_name, last_name, address, city, state, zip, phone_number, email_id, address_book_name, type) VALUES
+('deepali', 'garg', 'rohini','delhi',delhi',123231,9988131819,'deepali@gmail.com','mycontacts','family'),
+('deepali', 'garg', 'rohini','delhi',delhi',123231,9988131819,'deepali@gmail.com','mycontacts','friends');
+select * from address_book;
+```
+
