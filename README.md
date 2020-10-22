@@ -56,3 +56,8 @@ select city, count(first_name) from address_book group by city;
 select state, count(first_name) from address_book group by state;
 ```
 
+### Retrieve Sorted Entries by Person Name for given City
+```
+select * from address_book where city='delhi' order by first_name;
+```
+
