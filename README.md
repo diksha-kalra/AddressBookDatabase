@@ -72,3 +72,8 @@ update address_book set address_book_name='mycontacts', type='profession' where 
 select * from address_book;
 ```
 
+### Count Person in Address Book by Type
+```
+select type, count(first_name) from address_book group by type;
+```
+
