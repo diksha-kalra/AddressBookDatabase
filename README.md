@@ -50,3 +50,9 @@ delete from address_book where first_name='naman' and last_name='kalra';
 select * from address_book where city='delhi' or state='delhi';
 ```
 
+### Count Contacts by City and State
+```
+select city, count(first_name) from address_book group by city;
+select state, count(first_name) from address_book group by state;
+```
+
