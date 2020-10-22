@@ -16,7 +16,7 @@ address      VARCHAR(50) NOT NULL,
 city         VARCHAR(20) NOT NULL,
 state        VARCHAR(20) NOT NULL,
 zip          int(6) NOT NULL,
-phone_number int(10) NOT NULL,
+phone_number VARCHAR(15) NOT NULL,
 email_id     VARCHAR(20) NOT NULL,
 PRIMARY KEY  (first_name, last_name));
 ```
