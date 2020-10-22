@@ -61,3 +61,14 @@ select state, count(first_name) from address_book group by state;
 select * from address_book where city='delhi' order by first_name;
 ```
 
+### Alter Address Book to add Name and Type
+```
+alter table address_book add address_book_name VARCHAR(20) NOT NULL;
+alter table address_book add type VARCHAR(20) NOT NULL;
+describe address_book;
+update address_book set address_book_name='mycontacts' , type='friends' where first_name='ankit';
+update address_book set address_book_name='mycontacts', type='family' where first_name='annie';
+update address_book set address_book_name='mycontacts', type='profession' where first_name='james';
+select * from address_book;
+```
+
