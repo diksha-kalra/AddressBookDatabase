@@ -45,3 +45,8 @@ updtae address_book set address='malad' where first_name='naman';
 delete from address_book where first_name='naman' and last_name='kalra';
 ```
 
+### Retrieve Person Belonging to City or State
+```
+select * from address_book where city='delhi' or state='delhi';
+```
+
