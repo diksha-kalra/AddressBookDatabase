@@ -1,13 +1,13 @@
 # AddressBookDatabase
 
-### Create Address Book Service Database
+### UC1 Create Address Book Service Database
 ```
 create database address_book_service;
 show databases;
 use address_book_service;
 ```
 
-### Create Address Book Table in DB
+### UC2 Create Address Book Table in DB
 ```
 create table address_book (
 first_name   VARCHAR(20) NOT NULL,
@@ -21,7 +21,7 @@ email_id     VARCHAR(20) NOT NULL,
 PRIMARY KEY  (first_name, last_name));
 ```
 
-### Insert Contacts into Address Book Table
+### UC3 Insert Contacts into Address Book Table
 ```
 insert into address_book 
 (first_name, last_name, address, city, state, zip, phone_number, email_id) VALUES
@@ -34,34 +34,34 @@ insert into address_book
 select * from address_book;
 ```
 
-### Edit Contact Using Name
+### UC4 Edit Contact Using Name
 ```
 update address_book set zip=121232 where first_name='ankit';
 updtae address_book set address='malad' where first_name='naman';
 ```
 
-### Delete Contact From Table Using Name
+### UC5 Delete Contact From Table Using Name
 ```
 delete from address_book where first_name='naman' and last_name='kalra';
 ```
 
-### Retrieve Person Belonging to City or State
+### UC6 Retrieve Person Belonging to City or State
 ```
 select * from address_book where city='delhi' or state='delhi';
 ```
 
-### Count Contacts by City and State
+### UC7 Count Contacts by City and State
 ```
 select city, count(first_name) from address_book group by city;
 select state, count(first_name) from address_book group by state;
 ```
 
-### Retrieve Sorted Entries by Person Name for given City
+### UC8 Retrieve Sorted Entries by Person Name for given City
 ```
 select * from address_book where city='delhi' order by first_name;
 ```
 
-### Alter Address Book to add Name and Type
+### UC9 Alter Address Book to add Name and Type
 ```
 alter table address_book add address_book_name VARCHAR(20) NOT NULL;
 alter table address_book add type VARCHAR(20) NOT NULL;
@@ -72,12 +72,12 @@ update address_book set address_book_name='mycontacts', type='profession' where 
 select * from address_book;
 ```
 
-### Count Person in Address Book by Type
+### UC10 Count Person in Address Book by Type
 ```
 select type, count(first_name) from address_book group by type;
 ```
 
-### Add person to both Friend and Family
+### UC11 Add person to both Friend and Family
 ```
 alter table address_book drop PRIMARY KEY;
 alter table address_book add PRIMARY KEY(first_name, last_name, type);
@@ -88,3 +88,27 @@ insert into address_book
 select * from address_book;
 ```
 
+### UC13 Retrieve data from tables
+
+#### inserting data into tables
+```
+insert into address_book_dict (address_book_name, address_book_type) VALUES
+('mycontacts','family'),
+('personal','professional');
+
+insert into contact_details VALUES
+('diksha','kalra','mycontacts','new delhi','delhi','delhi',110019,'9899151956,'kalra@gmail.com'),
+('deepali','garg','personal','rohini','delhi','delhi',123123,'9899787878,'deepali@gmail.com');
+```
+
+#### retrieve data from tables
+```
+select * from contact_details where city='delhi';
+
+select * from contact_details where state='delhi';
+
+select * from contact_details where city='delhi' order by first_name;
+
+select a.address_book_type, count(c.first_name) from address_book_dict a left join contact_details c 
+on a.address_book_name=c.address_book_name group by a.address_book_type;
+```
